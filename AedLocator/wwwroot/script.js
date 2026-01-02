@@ -17,7 +17,7 @@
     tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:30px;">Connecting to Azure Database...</td></tr>';
 
     try {
-        // 2. THE LIVE API URL
+        // 2. THE LIVE API URL (Updated)
         const baseUrl = `https://aedlocator2026.azurewebsites.net/api/Aeds/search`;
         const url = `${baseUrl}?city=${encodeURIComponent(city)}&postalCode=${encodeURIComponent(postal)}`;
 
