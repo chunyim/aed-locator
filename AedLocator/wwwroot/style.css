@@ -1,0 +1,256 @@
+﻿:root {
+    --primary-red: #d32f2f;
+    --success-green: #2e7d32;
+    --dark-grey: #333;
+    --light-bg: #f8f9fa;
+    --google-blue: #4285F4;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--light-bg);
+    color: var(--dark-grey);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: var(--primary-red);
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    margin-bottom: 25px;
+    color: #666;
+}
+
+.search-container {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-top: 6px solid var(--primary-red);
+    margin-bottom: 30px;
+}
+
+.input-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.input-group {
+    flex: 1;
+    min-width: 250px;
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.button-group {
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Spinner Animation */
+.spinner {
+    display: none;
+    width: 18px;
+    height: 18px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 0.8s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading .spinner {
+    display: inline-block;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    min-width: 120px;
+}
+
+.search-btn {
+    background: var(--primary-red);
+    color: white;
+    flex: 2;
+}
+
+    .search-btn:disabled {
+        background: #999;
+        cursor: not-allowed;
+    }
+
+.reset-btn {
+    background: #666;
+    color: white;
+    flex: 1;
+}
+
+.download-btn {
+    background: var(--success-green);
+    color: white;
+    flex: 1;
+}
+
+.print-btn {
+    background: #444;
+    color: white;
+    flex: 1;
+}
+
+.table-wrapper {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #222;
+    color: white;
+    padding: 18px 15px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.map-btn {
+    background: var(--google-blue);
+    color: white;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* RESPONSIVE MOBILE VIEW */
+@media screen and (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+        thead tr {
+            position: absolute;
+            top: -9999px;
+        }
+
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        padding: 10px;
+    }
+
+    td {
+        position: relative;
+        padding-left: 45%;
+        text-align: right;
+        border: none;
+    }
+
+        td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 15px;
+            font-weight: bold;
+            color: var(--primary-red);
+        }
+
+    .map-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
+
+/* PRINT OPTIMIZATION */
+@media print {
+    .no-print, .button-group, .map-btn, .search-container {
+        display: none !important;
+    }
+
+    body {
+        background-color: white;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+
+    table {
+        width: 100%;
+        border: 1px solid #000;
+    }
+
+    th, td {
+        border: 1px solid #eee;
+        color: black !important;
+    }
+
+    th {
+        background: #eee !important;
+        color: black !important;
+    }
+
+    body::before {
+        content: "Toronto AED Locator - Emergency Reference List";
+        display: block;
+        font-size: 18pt;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #000;
+    }
+}
